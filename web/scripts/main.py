@@ -14,7 +14,7 @@ def run():
     op.add_argument('--disable-dev-shm-usage')
     op.add_argument('blink-settings=imagesEnabled=false')
     op.add_argument('--disable-gpu')
-    chrome_options.add_argument("--remote-debugging-port=9222")
+    op.add_argument("--remote-debugging-port=9222")
     op.add_experimental_option("excludeSwitches", ["enable-automation"])
     op.add_experimental_option('useAutomationExtension', False)
     browser = webdriver.Chrome('/usr/local/bin/chromedriver')
