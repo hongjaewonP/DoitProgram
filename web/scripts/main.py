@@ -17,7 +17,7 @@ def run():
     op.add_argument("--remote-debugging-port=9222")
     op.add_experimental_option("excludeSwitches", ["enable-automation"])
     op.add_experimental_option('useAutomationExtension', False)
-    browser = webdriver.Chrome('/usr/local/bin/chromedriver')
+    browser = webdriver.Chrome(options=op,executable_path='/usr/local/bin/chromedriver')
     browser.get(url)
     browser.implicitly_wait(2)
 
