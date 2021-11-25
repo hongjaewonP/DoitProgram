@@ -9,8 +9,8 @@ def run():
     url = "https://eureka.ewha.ac.kr/eureka/my/public.do?pgId=P531005519"
     op=Options()
     op.add_experimental_option('prefs',{'download.default_directory':r'C:\Users\mocar\Desktop\down'})
-    op.add_arguments('--headless')
-    op.add_arguments('--no-sandbox')
+    op.add_argument('--headless')
+    op.add_argument('--no-sandbox')
     op.add_argument('--disable-dev-shm-usage')
     browser = webdriver.Chrome('/usr/local/bin/chromedriver')
     browser.get(url)
