@@ -12,6 +12,8 @@ def run():
     op.add_argument('--headless')
     op.add_argument('--no-sandbox')
     op.add_argument('--disable-dev-shm-usage')
+    op.add_argument('blink-settings=imagesEnabled=false')
+    op.add_argument('--disable-gpu')
     browser = webdriver.Chrome('/usr/local/bin/chromedriver')
     browser.get(url)
     browser.implicitly_wait(2)
