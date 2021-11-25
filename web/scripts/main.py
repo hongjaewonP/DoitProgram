@@ -14,6 +14,8 @@ def run():
     op.add_argument('--disable-dev-shm-usage')
     op.add_argument('blink-settings=imagesEnabled=false')
     op.add_argument('--disable-gpu')
+    op.add_experimental_option("excludeSwitches", ["enable-automation"])
+    op.add_experimental_option('useAutomationExtension', False)
     browser = webdriver.Chrome('/usr/local/bin/chromedriver')
     browser.get(url)
     browser.implicitly_wait(2)
