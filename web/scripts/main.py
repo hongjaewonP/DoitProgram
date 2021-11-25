@@ -9,7 +9,7 @@ def run():
     url = "https://eureka.ewha.ac.kr/eureka/my/public.do?pgId=P531005519"
     op=Options()
     op.add_experimental_option('prefs',{'download.default_directory':r'C:\Users\mocar\Desktop\down'})
-    browser = webdriver.Chrome('chromedriver.exe')
+    browser = webdriver.Chrome('home/ec2-user/DoitProgram/web/scripts/chromedriver')
     browser.get(url)
     browser.implicitly_wait(2)
 
