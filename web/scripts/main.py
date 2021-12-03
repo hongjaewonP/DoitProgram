@@ -11,6 +11,10 @@ import shutil
 from AClass.models import Class
 
 def run():  
+    
+    url = "https://eureka.ewha.ac.kr/eureka/my/public.do?pgId=P531005519"  # 강의계획안 사이트입니다.
+    url2 = "http://localhost:8000/"
+
     print("2021 - 겨울계절1차 : 1, 2021 - 2학기 : 2, ... , 2015 - 1학기 : 28 \n 반드시 숫자로만 입력해야 합니다! \n")
     semesterNum = input("학기를 설정해주세요. (1~28) : ")
 
