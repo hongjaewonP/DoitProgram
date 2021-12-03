@@ -15,7 +15,7 @@ def run():
     semesterNum = input("학기를 설정해주세요. (1~28) : ")
 
     # 크롬 브라우저로 웹 실행
-    path = "C:\Users\mocar\Downloads\chromedriver_win32\chromedriver.exe"
+    path = "/usr/local/bin/chromedriver"
     downloadPath = r'D:\학교\3학년 2학기\캡스톤디자인프로젝트\구현\다운로드 폴더'
     # 경로는 ''안에 넣어주면 되어요
 
@@ -27,6 +27,11 @@ def run():
     })
     #최대화면 변경
     op.add_argument('--start-fullscreen')
+    op.add_argument('--headless')
+    op.add_argument('--no-sandbox')
+    op.add_argument('--disable-dev-shm-usage')
+    op.add_argument('blink-settings=imagesEnabled=false')
+    op.add_argument('--disable-gpu')
     # 드라이버 실행
     driver = webdriver.Chrome(path, chrome_options= op)
     driver.get(url)
