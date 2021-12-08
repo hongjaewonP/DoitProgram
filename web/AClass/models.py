@@ -7,4 +7,4 @@ class Class(models.Model):
     title = models.CharField(max_length=200)
     div_course= models.CharField(max_length=100)
     professor = models.CharField(max_length=200)
-    crawled_time = models.CharField(max_length=200)
+    crawled_time = models.CharField(max_length=200,null=True)
