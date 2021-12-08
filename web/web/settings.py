@@ -25,11 +25,19 @@ SECRET_KEY = 'django-insecure-7@ipz9w(_t$&$c21+-5-$!06=)ns!rcyy8+n@@mp$25((@n*i!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['18.118.4.238']
 
 
 # Application definition
 
+=======
+ALLOWED_HOSTS = ['*']
+
+
+# Application definition
+#필요 app을 모두 넣어주어야합니다.
+>>>>>>> b9361f4fac4f82056a1adb917ecf64e59ecba63c
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -126,6 +134,9 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+<<<<<<< HEAD
 
 #임의 추가.
 ALLOWED_HOSTS = ['0.0.0.0:8000', 'localhost', '127.0.0.1']
+=======
+>>>>>>> b9361f4fac4f82056a1adb917ecf64e59ecba63c
