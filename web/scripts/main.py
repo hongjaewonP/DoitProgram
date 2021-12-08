@@ -107,9 +107,6 @@ def run():
     title = soup.find('div', id="mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_0_cell_0_3GridCellTextContainerElement").text
 <<<<<<< HEAD
 
-
-    Class(number=number, subnum=subnum, title=title).save()
-    print(number, subnum, title)
 =======
     div_course= soup.find('div', id="mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_0_cell_0_4GridCellTextContainerElement").text
     professor=soup.find('div',id="mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_0_cell_0_8GridCellTextContainerElement").text
