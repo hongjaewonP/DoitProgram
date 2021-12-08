@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content=""width="device-width", initial-scale="1.0">
     <title>Document</title>
+    <!-- bootstrap을 사용해 표를 명료하게 만들었습니다.-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
@@ -20,8 +21,10 @@
     </tr>
   </thead>
   <tbody>
+    <!-- 모든 강의와 특성에 대해 나타냅니다.-->
     {% for class in classes %}
     <tr>
+      
       <td>{{ class.nuber }}</td>
       <td>{{ class.subnum }}</td>
       <td>{{ class.title }}</td>

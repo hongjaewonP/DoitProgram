@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-
+#필요 app을 모두 넣어주어야합니다.
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

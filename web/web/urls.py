@@ -19,10 +19,12 @@ from AClass.views import index
 from rest_framework import routers
 import AClass.views
 
+#rest API 통신을 위해 라우터를 생성합니다.
 router = routers.DefaultRouter()
 router.register("classes", AClass.views.ClassViewSet)
 
-
+#주소 뒤 각 path를 붙이면 해당 url과 페이지 항목을 연결해줍니다.
+#통상 viewset의 url은 router로 설정해줍니다.
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
