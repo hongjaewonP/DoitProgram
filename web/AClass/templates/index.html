@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content=""width="device-width", initial-scale="1.0">
+    <title>Document</title>
+<<<<<<< HEAD
+=======
+    <!-- bootstrap을 사용해 표를 명료하게 만들었습니다.-->
+>>>>>>> b9361f4fac4f82056a1adb917ecf64e59ecba63c
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">학수번호</th>
+      <th scope="col">분반</th>
+      <th scope="col">과목명</th>
+<<<<<<< HEAD
+    </tr>
+  </thead>
+  <tbody>
+    {% for class in classes %}
+    <tr>
+      <td>{{ class.number }}</td>
+      <td>{{ class.subnum }}</td>
+      <td>{{ class.title }}</td>
+=======
+      <th scope="col">교과목구분</th>
+      <th scope="col">교수명</th>
+      <th scope="col">저장시간</th>  
+    </tr>
+  </thead>
+  <tbody>
+    <!-- 모든 강의와 특성에 대해 나타냅니다.-->
+    {% for class in classes %}
+    <tr>
+      
+      <td>{{ class.nuber }}</td>
+      <td>{{ class.subnum }}</td>
+      <td>{{ class.title }}</td>
+      <td>{{ class.div_course }}</td>
+      <td>{{ class.professor }}</td>
+      <td>{{ class.crawled_time }}</td>
+>>>>>>> b9361f4fac4f82056a1adb917ecf64e59ecba63c
+    </tr>
+    {% endfor %}}
+  </tbody>
+</table>
+</body>
+
+<<<<<<< HEAD
+</html>
+=======
+</html>
+>>>>>>> b9361f4fac4f82056a1adb917ecf64e59ecba63c
