@@ -1,3 +1,5 @@
+ main.py : 크롤링 코드입니다.
+ 
  크롤링 코드 실행 전 준비 사항
  1. beautiful soup를 설치해줍니다.
  cmd > pip install beautifulsoup4
