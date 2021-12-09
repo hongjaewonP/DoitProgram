@@ -17,6 +17,7 @@ FileScanner : Google vision API를 사용한 OCR 추출 관련 폴더입니다.
 data_1200 : 테스트를 쉽게 하기 위해 강의계획서 1200개를 수동으로 다운받아 모은 폴더입니다.
 
 extract_file : tabula를 이용하여 정보 추출, pdf->csv 파일 변환 - extract_file 폴더의 extract.py 확인
+
 #test.py는 기말 발표전 적절한 기술을 찾을 때 tesseract를 이용했던 코드입니다. extract.py 를 확인해주세요
 
 web : 서버 구현, 크롤링 구현과 관련된 폴더입니다.
