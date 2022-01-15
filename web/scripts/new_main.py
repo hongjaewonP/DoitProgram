@@ -1,9 +1,6 @@
 #! /usr/bin/env python3
 '''
-2022-01-12 수정사항 : 서버 연동이 원활하게 되지 않을까해서 linux환경에서 돌아가도록 기존 코드를 수정했습니다. 
-제가 ubuntu로 돌려봤을 땐 잘 돌아갔는데 ec2 가상환경에선 어떨지 모르겠네요.
-헤더를 불러오는 방법도 계속 알아보고 있는데 지난 학기와 마찬가지 이유로 찾을 수가 없네요ㅠㅠ
-
+최종 수정 : 2022-01-15
 이 코드는 강의계획안 사이트에서 파일을 자동으로 다운로드하는 코드입니다.
 설치해야하는 것 :
 beautifulsoup, selenium, pillow, selenium_screenshot
@@ -30,7 +27,10 @@ downloadPath는 파일을 저장받을 위치로 바꾸어주세요.
 print("2021 - 겨울계절1차 : 1, 2021 - 2학기 : 2, ... , 2015 - 1학기 : 28 \n 반드시 숫자로만 입력해야 합니다! \n")
 semesterNum = input("학기를 설정해주세요. (1~28) : ")
 path = r"/home/mjb/python/cd/chromedriver"  # chrome driver 저장 위치를 알려줍니다. ****************************
-downloadPath = r'/home/mjb/python/download_file'  # 로컬 컴퓨터 저장위치를 설정합니다.**************************
+downloadPath = r'/home/mjb/myvenv/bin/downloading'  # 로컬 컴퓨터 저장위치를 설정합니다.**************************
+
+
+
 
 # 파일 다운로드 경로 변경
 op = Options()
@@ -39,7 +39,7 @@ op.add_experimental_option('prefs', {
 })
 
 # 최대화면 변경
-op.add_argument('--start-fullscreen')
+#op.add_argument('--start-fullscreen')
 
 #headless 설정하기 (웹페이지를 띄우지 않아도 되게 함)
 op.add_argument('headless')
@@ -47,7 +47,9 @@ op.add_argument('headless')
 # 드라이버 실행
 driver = webdriver.Chrome(path, chrome_options=op)
 driver.get(url)
-time.sleep(2)
+driver.set_window_position(0, 0)
+driver.set_window_size(1920, 1080)
+time.sleep(10)
 
 # 학기를 자동으로 변경
 # 학기 선택은 상하키로 조종됩니다. 위에서부터 아래에 있는 학기를 선택할수록 반복 횟수를 늘립니다.
@@ -232,6 +234,7 @@ for i in range(1, 7):
                             driver.find_element_by_id(
                                 'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
                                     count) + '_cell_' + str(count) + '_' + number).click()
+                            print("downloading\n")
 
                         # URL을 올리신 교수님은 없었기에, 특별한 코드를 작성하지 않았습니다. 확인된다면 추가하겠습니다.
                         if number == "17":
@@ -239,9 +242,9 @@ for i in range(1, 7):
 
                         # 꼭 time sleep이 필요함.
                         time.sleep(2)
-
                         # 파일명 변경은 selenium에서 할 수 없기에 따로 코드를 짜야 합니다.
                         # 나중에 다른 python 파일로 분류하면 좋을 것 같습니다.
+
 
                         # 가장 최근에 다운받아진 파일을 대상으로 이름을 변경합니다. 따라서 파일 다운 순서가 꼬이지 않도록 주의해야 합니다.
                         filename = max([downloadPath + '/' + f for f in os.listdir(downloadPath)],
@@ -255,14 +258,14 @@ for i in range(1, 7):
                             else:
                                 temp = 0
 
-                        print(filename)  # 변경 전 파일명을 출력해봅니다.
+                        print("pre_change" + filename)  # 변경 전 파일명을 출력해봅니다.
 
                         # 파일 형식을 얻어 변경하게 될 파일명 뒤에 붙여야 합니다.
                         list_filename = filename.split(".")
                         lenmax = len(list_filename)
                         fileEx = list_filename[lenmax - 1]  # fileEx가 파일 형식입니다.
 
-                        print(new_filename + number + "." + fileEx)  # 변경 이후 파일명을 출력해봅니다.
+                        print("after_change"+new_filename + number + "." + fileEx)  # 변경 이후 파일명을 출력해봅니다.
 
                         # 파일명을 변경합니다.
                         shutil.move(os.path.join(downloadPath, filename),
