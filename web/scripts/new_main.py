@@ -241,7 +241,7 @@ for i in range(1, 7):
                             print("URL 찾았다 \n")
 
                         # 꼭 time sleep이 필요함.
-                        time.sleep(2)
+                        time.sleep(5)
                         # 파일명 변경은 selenium에서 할 수 없기에 따로 코드를 짜야 합니다.
                         # 나중에 다른 python 파일로 분류하면 좋을 것 같습니다.
 
@@ -270,7 +270,7 @@ for i in range(1, 7):
                         # 파일명을 변경합니다.
                         shutil.move(os.path.join(downloadPath, filename),
                                     os.path.join(downloadPath, new_filename + number + "." + fileEx))
-                        time.sleep(1)
+                        time.sleep(3)
 
                 # 현재 화면에 없는 element과 상호작용할 수 없습니다.
                 # 따라서 전체 화면의 브라우저 스크롤 가장 밑으로 내립니다. *강의계획안 사이트에는 전체 스크롤과 그리드 스크롤이 있습니다.
@@ -308,7 +308,7 @@ for i in range(1, 7):
             list_scrollStyle = scrollStyle.split()
             scrollStyleHeight = list_scrollStyle[16]
 
-        time.sleep(2)
+        time.sleep(5)
 
 # 해당 학기의 파일을 모두 다운받았습니다.
 print("완료")
