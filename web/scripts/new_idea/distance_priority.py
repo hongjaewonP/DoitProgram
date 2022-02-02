@@ -5,17 +5,19 @@
 각 항목 당 추천도를 매겨서 추천 시간표 보이기
 
 * 연강일 경우 장소 간 거리 우선
-1. 수강할 강의를 입력하면 조합하여 가능한 모든 시간표를 만든다. 아마 2차배열?
+1. 수강할 강의를 입력하면 조합하여 가능한 모든 시간표를 만든다. -> make_timetable.py
 2. 강의실 정보를 받아와서 정해진 장소로 치환한다.
 3. 네이버지도에서 거리나 시간 정보를 크롤링해온다.
 4. 점수를 매긴다
 정확한 시간은 나타낼 필요 없고 점수 매기기가 목적
-=> 학생들이 자주 쓰는 지름길 같은 건 어떻게 반영하면 좋을까?
+=> 학생들이 자주 쓰는 지름길 같은 건 어떻게 반영하면 좋을까? => 새로운 기술을 적용할 수 있을까...?
 
 * 연강이 3개 이상 있을 경우 추천도를 깎기
 * 하루동안 학교에 있는 시간이 길수록 추천도를 깎기
 * 공강이 있으면 추천도 올리기
 
+-window 환경에서만 테스트함
+-두 위치의 시간, 거리 가져오는 것까지만 구현해봄
 '''
 from selenium import webdriver
 from bs4 import BeautifulSoup
@@ -26,7 +28,7 @@ start = "이화여자대학교 학관"
 finish = "이화여자대학교 공과대학"
 data = []
 
-webdriver_path = r"D:\school\team_project\chromedriver_win32\chromedriver.exe"
+webdriver_path = r"D:\school\team_project\chromedriver_win32\chromedriver.exe"  #*******chrome driver 위치로 수정****
 op = webdriver.ChromeOptions()
 op.add_argument('headless')
 op.add_argument('--start-fullscreen')
