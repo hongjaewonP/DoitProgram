@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 '''
-최종 수정 : 2022-01-15
+최종 수정 : 2022-02-02 timesleep 시간 조정
 이 코드는 강의계획안 사이트에서 파일을 자동으로 다운로드하는 코드입니다.
 설치해야하는 것 :
 beautifulsoup, selenium, pillow, selenium_screenshot
