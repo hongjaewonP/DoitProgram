@@ -26,7 +26,7 @@ with audioFile as source:
 
 print(type(audio))
 print(r.recognize_google(audio,None,"ko-KO"))   # 기본은 영어를 인식, 한글 언어 인식 가능. 테스트 해보니 잘 됨
-# google web speech api는 무료고 편리한데 하루 50번만 돌려볼 수 있다는 커다란 단점 존재... 유료로도 횟수를 늘릴 수 >없음<
+# google web speech api는 무료고 KEY가 내장되어 있어 그냥 쓰면 돼서 편리한데 하루 50번만 돌려볼 수 있다는 커다란 단점 존재... 유료로도 횟수를 늘릴 수 >없음<
 # 다음 학기 때 API 구매하는 데 예산 요청해도 괜찮을 것 같다
 
 
