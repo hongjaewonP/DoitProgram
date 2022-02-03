@@ -1,3 +1,6 @@
+'''
+2022-02-03 생성
+'''
 import speech_recognition as sr # pip install SpeechRecognition
 
 r = sr.Recognizer()
