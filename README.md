@@ -38,3 +38,5 @@ web : 서버 구현, 크롤링 구현과 관련된 폴더입니다.
 web-changes : 크롤링으로 받은 파일 중 어플 일정표에 쓰일 정보들을 django server에 올리는 코드  
 #web 폴더에 있는 파일 중 urls.py, admin.py, models.py, views.py은 web-changes 폴더에 올린 
 urls.py, admin.py, models.py, views.py로 바꿔주셔야 하고, migrations폴더에 migration이 없어서 /migrations/0002_courses.py를 추가해 주셔야 django 서버 접속 시 파일 정보들이 업로드 된 것을 확인할 수 있습니다.
+
+test.png 폴더-> AVD로 어플 실행화면 캡쳐
