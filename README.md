@@ -41,6 +41,6 @@ urls.py, admin.py, models.py, views.py로 바꿔주셔야 하고, migrations폴�
 
 test.png : AVD로 어플 실행화면 캡쳐
 
-jolp : 파일업로드(+ firebase의 realtime db에 업로드)/ 메인화면 코드
+jolp : 파일업로드(+ firebase의 realtime db에 업로드)/ 메인화면(월별 시간표)/ 주간 시간표 코드 
 
 #기존 mysql - php 연동 로그인+파일 업로드 코드는 pull request push하면 확인할 수 있습니다!
