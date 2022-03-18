@@ -12,7 +12,7 @@ import time
 
 def read_review_data(filename):
     with open(filename, 'r') as f:
-        data = [line.split('/t') for line in f.read().splitlines()]
+        data = [line.split('\t') for line in f.read().splitlines()]
         data = data[1:]
     return data
 
