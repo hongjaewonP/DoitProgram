@@ -67,7 +67,8 @@ public class RegisterActivity extends AppCompatActivity {
                 String userSchool = et_school.getText().toString().trim();
                 String userName = et_name.getText().toString().trim();
 
-                firebaseDatabase = FirebaseDatabase.getInstance("https://jolp-a5446-default-rtdb.asia-southeast1.firebasedatabase.app/");
+                #db 나라 설정을 아시아로 해서 getInstanc()안에 다음과 같이 추가
+                firebaseDatabase = FirebaseDatabase.getInstance("https://${app-name}.asia-southeast1.firebasedatabase.app/");
                 databaseReference = firebaseDatabase.getReference("UserData");
                 //회원정보를 제대로 입력했을 경우
                 if (validateEmail(userID) && validatePass(userPass) && validateSc(userSchool) && validateNm(userName)) {
