@@ -29,9 +29,6 @@ komoran = Komoran()
 docs = [komoran.nouns(sentence[1]) for sentence in review_data]
 print('2) 명사 추출 완료 : ', time.time() - start)
 
-
-docs = review_data
-
 print('3) 모델 학습 시작')
 model = Word2Vec(sentences = docs, vector_size= 200, window= 4, hs= 1, min_count= 2, sg = 1)
 #모델 학습에 필요한 문장 데이터이자 입력값, 단어 임베딩 벡터 차원, 주변 단어 윈도우 크기, 1은 softmax 0은 음수 샘플링? , 학습할 단어 최소 빈도값, 0은 CBOW 1은 skip-gram
