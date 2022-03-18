@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void setUserProfile() {
         String email = mAuth.getCurrentUser().getEmail();
-        firebaseDatabase = FirebaseDatabase.getInstance("https://jolp-a5446-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        firebaseDatabase = FirebaseDatabase.getInstance("https://${app-name}.asia-southeast1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference().child("UserData");
    //     Query query = databaseReference.orderByChild("userID").equalTo(email);
         databaseReference.orderByChild("userID").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
