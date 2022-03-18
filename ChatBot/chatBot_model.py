@@ -4,7 +4,7 @@
 학습 데이터를 데이터베이스에 저장 필요. -> 학습프로그램을 만들어도 되지만 정해진 엑셀 양식에 질문과 답변을 정리해서 DB에 저장해도 ok
 '''
 
-import chatBot_excel #그냥 엑셀 읽어오는
+#import chatBot_excel #그냥 엑셀 읽어오는
 import numpy as np #행렬처리
 from konlpy.tag import Komoran #속도가 빠르고 품사 태그가 다양
 from gensim.models import Word2Vec
