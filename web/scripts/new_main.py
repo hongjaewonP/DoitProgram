@@ -114,7 +114,7 @@ for i in range(1, 7):
          23 : 정원 | 24 : 수업방식 | 25 : 비고
 
          파일명을 통일해서 저장합니다.
-         통일할 파일명은 다음과 같습니다: 교과목명_분반_교수_강의계획안번호.파일형식
+         통일할 파일명은 다음과 같습니다: 교과목명_학수번호_분반_교수_강의계획안번호.파일형식
         '''
 
         # 파일 처음부터 끝까지 받기
@@ -154,7 +154,11 @@ for i in range(1, 7):
                 className = driver.find_element_by_id(
                     'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
                         count) + '_cell_' + str(count) + '_3').text
-                # classNum은 학수번호입니다.
+                # realClassNum은 학수번호입니다.
+                realClassNum = driver.find_element_by_id(
+                    'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_'+ str(
+                        count) +'_cell_'+str(count)+'_1').text
+                # classNum은 분반입니다.
                 classNum = driver.find_element_by_id(
                     'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
                         count) + '_cell_' + str(count) + '_2').text
@@ -183,7 +187,7 @@ for i in range(1, 7):
                 professor = professor.replace("|", "+")
                 professor = professor.replace("\n", "")
 
-                new_filename = className + "_" + classNum + "_" + professor + "_"
+                new_filename = className + "_" + realClassNum + "_" + classNum + "_" + professor + "_"
                 # 이후 뒤에 강의계획안번호와 파일형식을 붙일 예정
 
                 print("count: " + str(count))
