@@ -249,8 +249,9 @@ def moveDir(file):
 
 
 
-origin_file = "C:/Users/wonai/NLPprogram/testpdf.pdf"
-pdf_file = moveDir(origin_file)
-pdf_extract_table_info(pdf_file)
-merged_img = img_merge(pdf_to_jpg(pdf_file))
-word_list = extract_txt_from_img(merged_img)
+#origin_file = "C:/Users/wonai/NLPprogram/testpdf.pdf"
+#pdf_file = moveDir(origin_file)
+#pdf_extract_table_info(pdf_file)
+#merged_img = img_merge(pdf_to_jpg(pdf_file))
+#word_list = extract_txt_from_img(merged_img)
+print()

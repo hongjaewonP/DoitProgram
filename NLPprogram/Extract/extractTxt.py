@@ -5,7 +5,6 @@ import io
 import re
 
 #file_name = r"C:/Users/wonai/NLPprogram/Extract/testpdf/merged.jpg" ## pdfTojpg 리턴값 바로 받으면 됨.
-
 def extract_txt_from_img(file_name):
     from google.cloud import vision
     client = vision.ImageAnnotatorClient()
@@ -38,7 +37,6 @@ def extract_txt_from_img(file_name):
 
     return text_list
     #파일의 모든 단어와 단어의 bound를 list에 담아 리턴한다.
-#print(extract_txt_from_img('C:/Users/wonai/mystatus/Doit_program/test1.pdf_dir/merged.jpg'))
 
 
 def str_to_bound(word):
@@ -127,4 +125,6 @@ def extract_txt(file_name):
     return information
 
 
-#print(extract_txt(file_name))
+file_name=r'C:/Users/wonai/mystatus/Doit_program/DoitProgram/NLPprogram/Extract/testpdf/merged.jpg'
+print(extract_txt(file_name))
+
