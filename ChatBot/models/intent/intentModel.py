@@ -1,9 +1,8 @@
-# 모델 가지고 의도분류 모델 만들기
+# 의도 분류 모델 모듈
 import tensorflow as tf
 from tensorflow.keras.models import Model, load_model
 from tensorflow.keras import  preprocessing
 
-#의도 분류 모델 모듈
 class IntentModel:
     def __init__(self, model_name, proprocess):
         #의도 클래스별 label
