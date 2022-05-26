@@ -5,3 +5,4 @@ chatbot 관련 모든 코드
 config : 변수 설정
 models : 챗봇 엔진 구동에 필요한 딥러닝 모델 생성 관련 코드
 train_tools : 사전 학습 코드
+utils : 챗봇 구동하는 데 필요한 기본적인 코드
