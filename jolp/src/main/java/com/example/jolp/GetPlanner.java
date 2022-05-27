@@ -1,3 +1,4 @@
+//retrofit으로 서버로부터 파일 받아오기 수정중
 package com.example.jolp;
 
 import android.app.Activity;
