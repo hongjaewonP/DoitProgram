@@ -5,5 +5,5 @@
 현재 서버와의 연결만 확인하고 수정 필요함(해당 강의계획서에 대한 .json파일을 받아와야 함)
 floating button 클릭시 위에서부터 차례대로 
 강의계획서 검색, 일정 등록 화면, 챗봇 화면(시나리오 작성완료 - 아직 어플과 연결x)
-navigation drawer에 뜨는 주간시간표 test와 feedback은 무시해주세요.
+navigation drawer에 뜨는 주간시간표 test와 feedback(timetableview folder)은 무시해주세요.
 회원가입을 위해서 안드로이드 스튜디오에 google-services.json 파일을 추가해주세요
