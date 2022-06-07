@@ -12,7 +12,7 @@ public class CalendarUtils {
 
     public static String formattedDate(LocalDate date)
     {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM월 dd일");
         return date.format(formatter);
     }
 
@@ -24,7 +24,7 @@ public class CalendarUtils {
 
     public static String monthYearFromDate(LocalDate date)
     {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM월");
         return date.format(formatter);
     }
 

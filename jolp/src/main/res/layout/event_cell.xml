@@ -9,7 +9,7 @@
         android:id="@+id/eventCelltime"
         android:layout_width="95dp"
         android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="13dp"
         android:gravity="center"
         android:text="Event"
         android:textColor="@color/black"
@@ -19,11 +19,20 @@
         android:id="@+id/eventCellname"
         android:layout_width="208dp"
         android:layout_height="match_parent"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="16dp"
         android:gravity="fill_vertical"
         android:text="Event name"
         android:textColor="@color/black"
         android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/eventCelledit"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="6dp"
+        android:gravity="center_vertical"
+        android:src="@drawable/edit" />
 
 
 </LinearLayout>

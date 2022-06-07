@@ -1,5 +1,3 @@
-#navigation header의 유저 정보가 바뀌질 않아서 해결하면 코드 수정해서 올리겠습니다
-#수정할 부분 - setUserProfile()
 package com.example.jolp;
 
 import androidx.annotation.NonNull;
@@ -10,16 +8,19 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jolp.EventEditActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,13 +28,30 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
+import com.example.jolp.UserData;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.util.JsonMapper;
+import com.google.firebase.firestore.auth.User;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import static com.example.jolp.CalendarUtils.daysInMonthArray;
 import static com.example.jolp.CalendarUtils.monthYearFromDate;
+import static com.example.jolp.Event.*;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, CalendarAdapter.OnItemListener {
 
@@ -43,10 +61,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerView calendarRecyclerView;
     private FirebaseAuth mAuth;
     private DrawerLayout drawer;
-    Toolbar toolbar;
+    private Toolbar toolbar;
     private NavigationView navigationView;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    private ArrayList<Event> eventlistt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -70,17 +89,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         CalendarUtils.selectedDate = LocalDate.now();
         setMonthView();
         mAuth = FirebaseAuth.getInstance();
+        View header = navigationView.getHeaderView(0);
+        iv_name = (TextView) header.findViewById(R.id.tv_name);
+        iv_info = (TextView) header.findViewById(R.id.tv_info);
         setUserProfile();
-        ImageButton imageButton = (ImageButton) findViewById(R.id.uploadbtn);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), UploadActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        //sharedpreference
     }
+
 
     @Override
     public void onBackPressed() {
@@ -126,38 +141,114 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     {
         monthYearText.setText(monthYearFromDate(CalendarUtils.selectedDate));
         ArrayList<LocalDate> daysInMonth = daysInMonthArray(CalendarUtils.selectedDate);
-
         CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);
-        setEventAdapter();
+        onAdapter();
     }
 
     private void setEventAdapter()
     {
-        ArrayList<Event> dailyEvents = Event.eventsForDate(CalendarUtils.selectedDate);
+        String date = CalendarUtils.formattedDate(CalendarUtils.selectedDate);
+        ArrayList<Event> dailyEvents = eventsForDate(CalendarUtils.selectedDate);
         EventAdapter eventAdapter = new EventAdapter(getApplicationContext(), dailyEvents);
         eventListView.setAdapter(eventAdapter);
     }
 
-    private void setUserProfile() {
+    /* 기존에서 sharedpreferences를 사용했는데 변경
+    private void saveData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(eventsList);
+        editor.putString("event list", json);
+        editor.apply();
+    } */
+
+    private ArrayList<Event> loadData() {
+        ArrayList<Event> eventArrayList = new ArrayList<Event>();
+        /*
+        SharedPreferences sp = getSharedPreferences("shared", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sp.getString("event list", null);
+        Type type = new TypeToken<ArrayList<Event>>() {}.getType();
+        eventArrayList = gson.fromJson(json, type);
+        */
+        File file = new File(this.getFilesDir(),"event list.json");
+        FileReader fileReader = null;
+        String files = "";
+        try {
+            files = EventEditActivity.getStringFromFile(file);
+            JSONArray arra = new JSONArray(files);
+            for (int i=0; i<arra.length(); i++) {
+                JSONObject j = arra.getJSONObject(i);
+                String name = j.getString("name");
+                String date = j.getString("date");
+                String place = j.getString("place");
+                String start = j.getString("starttime");
+                String end = j.getString("endtime");
+                Event news = new Event(name, date, place, start, end);
+                eventArrayList.add(news);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return eventArrayList;
+    }
+
+    public static ArrayList<Event> eventForDate(ArrayList<Event> eventlist, LocalDate date)
+    {
+        /*
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM월 dd일");
+        LocalDate parsedate = LocalDate.parse(date, formatter); */
+        ArrayList<Event> events = new ArrayList<>();
+
+        for(Event event : eventlist)
+        {
+            String gevent = event.getDate();
+            //event.getLocalDate(gevent).equals(date)
+            if(event.getLocalDate(gevent).equals(date))
+                events.add(event);
+        }
+
+        return events;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        eventlistt = loadData();
+        String date = CalendarUtils.formattedDate(CalendarUtils.selectedDate);
+        ArrayList<Event> events = eventForDate(eventlistt, CalendarUtils.selectedDate);
+        EventAdapter eventAdapter = new EventAdapter(getApplicationContext(), events);
+        eventListView.setAdapter(eventAdapter);
+    }
+
+    protected void onAdapter() {
+        eventlistt = loadData();
+        if(eventlistt == null){
+            setEventAdapter();
+        }
+        else{
+            //String date = CalendarUtils.formattedDate(CalendarUtils.selectedDate);
+            ArrayList<Event> events = eventForDate(eventlistt, CalendarUtils.selectedDate);
+            EventAdapter eventAdapter = new EventAdapter(getApplicationContext(), events);
+            eventListView.setAdapter(eventAdapter);
+        }
+    }
+
+    protected void setUserProfile() {
         String email = mAuth.getCurrentUser().getEmail();
-        firebaseDatabase = FirebaseDatabase.getInstance("https://${app-name}.asia-southeast1.firebasedatabase.app/");
+        firebaseDatabase = FirebaseDatabase.getInstance("https://jolp-a5446-default-rtdb.asia-southeast1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference().child("UserData");
-   //     Query query = databaseReference.orderByChild("userID").equalTo(email);
-        databaseReference.orderByChild("userID").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child(mAuth.getCurrentUser().getUid()).
+                addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.exists()){
                             UserData user = snapshot.getValue(UserData.class);
-
-                            View header = navigationView.getHeaderView(0);
-                            iv_name = (TextView) header.findViewById(R.id.tv_name);
-                            iv_info = (TextView) header.findViewById(R.id.tv_info);
-                            String name = user.getUserName();
-                        //    String email = mAuth.getCurrentUser().getEmail();
-                            iv_name.setText(name);
+                            iv_name.setText(user.getUserName());
                             iv_info.setText(email);
                         }
                     }
@@ -204,10 +295,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(this, UploadActivity.class));
             finish();
         } else if (id == R.id.nav3) {
-            Toast.makeText(getApplicationContext(),"setting activity", Toast.LENGTH_SHORT).show();
+            String a = mAuth.getCurrentUser().getDisplayName();
+            Toast.makeText(getApplicationContext(),a, Toast.LENGTH_SHORT).show();
         }
         else if(id == R.id.nav4) {
-            Toast.makeText(getApplicationContext(),"Feedback activity", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, FeedBack.class));
+            finish();
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;

@@ -25,19 +25,11 @@ SECRET_KEY = 'django-insecure-7@ipz9w(_t$&$c21+-5-$!06=)ns!rcyy8+n@@mp$25((@n*i!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< HEAD
-ALLOWED_HOSTS = ['18.118.4.238']
-
-
-# Application definition
-
-=======
 ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 #필요 app을 모두 넣어주어야합니다.
->>>>>>> b9361f4fac4f82056a1adb917ecf64e59ecba63c
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -86,9 +78,23 @@ WSGI_APPLICATION = 'web.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'android-plan-db',
+        'USER': 'start23',
+        'PASSWORD': 'ewhastart23',
+        'HOST': 'applan.cryaditlm9jj.us-east-2.rds.amazonaws.com',
+        'PORT': '3306',
+        'OPTIONS':{
+            'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"'
+        }
+
     }
+}
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.SessionAuthentication"
+    ),
 }
 
 
@@ -116,13 +122,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -134,9 +140,3 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-<<<<<<< HEAD
-
-#임의 추가.
-ALLOWED_HOSTS = ['0.0.0.0:8000', 'localhost', '127.0.0.1']
-=======
->>>>>>> b9361f4fac4f82056a1adb917ecf64e59ecba63c

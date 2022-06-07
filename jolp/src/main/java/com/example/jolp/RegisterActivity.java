@@ -19,15 +19,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    ProgressBar progressBar;
+ //   ProgressBar progressBar;
     public DatabaseReference databaseReference;
     public FirebaseDatabase firebaseDatabase;
     protected FirebaseAuth.AuthStateListener firebaseAuthListener;
@@ -47,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
         et_name = (EditText) findViewById(R.id.edit_name);
         txt_login = (TextView) findViewById(R.id.text_login);
         btn_register = (Button) findViewById(R.id.btn_register);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+    //    progressBar = (ProgressBar) findViewById(R.id.progressBar);
         mAuth = FirebaseAuth.getInstance();
 
         txt_login.setOnClickListener(new View.OnClickListener() {
@@ -67,8 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String userSchool = et_school.getText().toString().trim();
                 String userName = et_name.getText().toString().trim();
 
-                #db 나라 설정을 아시아로 해서 getInstanc()안에 다음과 같이 추가
-                firebaseDatabase = FirebaseDatabase.getInstance("https://${app-name}.asia-southeast1.firebasedatabase.app/");
+                firebaseDatabase = FirebaseDatabase.getInstance("https://jolp-a5446-default-rtdb.asia-southeast1.firebasedatabase.app/");
                 databaseReference = firebaseDatabase.getReference("UserData");
                 //회원정보를 제대로 입력했을 경우
                 if (validateEmail(userID) && validatePass(userPass) && validateSc(userSchool) && validateNm(userName)) {
@@ -77,8 +76,9 @@ public class RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
+                                        FirebaseUser fuser = mAuth.getCurrentUser();
                                         UserData data = new UserData(userID, userPass, userSchool, userName);
-                                        databaseReference.child(userSchool).child(mAuth.getCurrentUser().getUid()).setValue(data).
+                                        databaseReference.child(fuser.getUid()).setValue(data).
                                                 addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
@@ -94,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                 });
                                     } else {
                                         // 계정이 중복된 경우
-                                        Toast.makeText(RegisterActivity.this, "이미 존재하는 계정입니다.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterActivity.this, "이미 존재하는 계정", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -172,23 +172,5 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
     } */
-@Override
-protected void onStart() {
-    super.onStart();
-    //if the user already logged in then it will automatically send on Dashboard/MainActivity
-    if (mAuth.getCurrentUser() != null) {
-        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-        startActivity(intent);
-    }
- //   mAuth.addAuthStateListener(firebaseAuthListener); >>강제종료 시켜서 지움
-}
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (firebaseAuthListener != null) {
-            mAuth.removeAuthStateListener(firebaseAuthListener);
-        }
-    }
 
 }

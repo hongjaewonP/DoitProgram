@@ -101,22 +101,25 @@ public class LoginActivity extends AppCompatActivity {
             return true;
         }
     }
-/*
-    private void loginUser(String email, String password) {
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // 로그인 성공
-                            Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
-                            mAuth.addAuthStateListener(firebaseAuthListener);
-                        } else {
-                            // 로그인 실패
-                            Toast.makeText(LoginActivity.this, "아이디 또는 비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    } */
+
+    //이전에 로그아웃 안했으면 가장 최근에 로그인한 아이디로 접속됨
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //if the user already logged in then it will automatically send on Dashboard/MainActivity
+        if (mAuth.getCurrentUser() != null) {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+        //   mAuth.addAuthStateListener(firebaseAuthListener); >>강제종료 시켜서 지움
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (firebaseAuthListener != null) {
+            mAuth.removeAuthStateListener(firebaseAuthListener);
+        }
+    }
 
 }

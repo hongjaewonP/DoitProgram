@@ -18,6 +18,6 @@
     <item
         android:id="@+id/nav4"
         android:icon="@drawable/fb"
-        android:title="피드백" />
+        android:title="주간시간표 test" />
     </group>
 </menu>

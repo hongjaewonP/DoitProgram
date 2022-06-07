@@ -2,7 +2,7 @@ package com.example.jolp;
 
 //사용자 기본정보
 public class UserData {
-    public String userID, userPass, userSchool, userName;
+    private String userID, userPass, userSchool, userName;
 
     public UserData(){
 

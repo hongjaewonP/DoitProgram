@@ -10,7 +10,7 @@
         android:id="@+id/edit_id"
         android:layout_width="200dp"
         android:layout_height="45dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="150dp"
         android:ems="10"
         android:hint="아이디(이메일)"
         android:inputType="textPersonName"
@@ -39,6 +39,7 @@
         android:ems="10"
         android:hint="학교"
         android:inputType="textPersonName"
+        android:privateImeOptions="defaultInputMode=korean"
         app:layout_constraintEnd_toEndOf="@+id/edit_pw"
         app:layout_constraintStart_toStartOf="@+id/edit_pw"
         app:layout_constraintTop_toBottomOf="@+id/edit_pw" />
@@ -51,6 +52,7 @@
         android:ems="10"
         android:hint="이름"
         android:inputType="textPersonName"
+        android:privateImeOptions="defaultInputMode=korean"
         app:layout_constraintEnd_toEndOf="@+id/edit_sc"
         app:layout_constraintStart_toStartOf="@+id/edit_sc"
         app:layout_constraintTop_toBottomOf="@+id/edit_sc" />
@@ -75,6 +77,7 @@
         android:text="회원가입 완료 시 로그인"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <!--
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,5 +85,5 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:elevation="10dp"
-        android:visibility="gone" />
+        android:visibility="gone" /> -->
 </androidx.constraintlayout.widget.ConstraintLayout>

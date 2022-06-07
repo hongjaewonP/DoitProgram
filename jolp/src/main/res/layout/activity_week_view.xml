@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".WeekViewActivity">
+    tools:context=".WeekViewActivity"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start" >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
+    <!-- 상단 바 -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,7 +37,7 @@
         android:background="@null"
         android:textStyle="bold"
         android:onClick="monthlyAction"
-        android:textSize="20sp"/>
+        android:textSize="20sp"/> -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,7 +61,7 @@
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="wrap_content"
-            android:text="Feb 2021"
+            android:text="2022 3월"
             android:textSize="20sp"
             android:textAlignment="center"
             android:textColor="@color/black"/>
@@ -68,7 +88,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="SUN"
+            android:text="일"
             android:textColor="@color/gray"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -77,7 +97,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="MON"
+            android:text="월"
             android:textColor="@color/gray"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -86,7 +106,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TUE"
+            android:text="화"
             android:textColor="@color/gray"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -95,7 +115,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="WED"
+            android:text="수"
             android:textColor="@color/gray"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -104,7 +124,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="THUR"
+            android:text="목"
             android:textColor="@color/gray"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -113,7 +133,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="FRI"
+            android:text="금"
             android:textColor="@color/gray"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -122,11 +142,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="SAT"
+            android:text="토"
             android:textColor="@color/gray"
             android:textAlignment="center"
             android:textSize="16sp"/>
-
 
     </LinearLayout>
 
@@ -134,25 +153,89 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="47dp" />
 
-    <Button
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Event"
-        android:textColor="@color/white"
-        android:background="@null"
-        android:textStyle="bold"
-        android:onClick="newEventAction"
-        android:layout_gravity="center"
-        android:textSize="20sp"/>
+        android:layout_marginTop="5dp">
 
-    <ListView
-        android:id="@+id/eventListView"
+        <ListView
+            android:id="@+id/eventListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <LinearLayout
+            android:id="@+id/ly_bar_bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="right"
+            android:orientation="vertical">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/ic_baseline_search_24" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="30dp"
+                android:src="@drawable/week2"
+                app:layout_constraintBottom_toBottomOf="@id/fab"
+                app:layout_constraintEnd_toEndOf="@id/fab"
+                app:layout_constraintStart_toStartOf="@id/fab"
+                app:layout_constraintTop_toTopOf="@id/fab" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabChat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginRight="30dp"
+                android:src="@drawable/ic_baseline_chat_24"
+                app:borderWidth="0dp"
+                app:elevation="6dp"
+                app:pressedTranslationZ="12dp" />
+
+            <!--
+            app:layout_constraintBottom_toBottomOf="@id/fab"
+                app:layout_constraintEnd_toEndOf="@id/fab"
+                app:layout_constraintStart_toStartOf="@id/fab"
+                app:layout_constraintTop_toTopOf="@id/fab"
+            -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="30dp"
+                android:src="@drawable/week2"
+                app:borderWidth="0dp"
+                app:elevation="6dp"
+                app:pressedTranslationZ="12dp" />
+        </LinearLayout>
+
+        <!-- </ListView> -->
+
+        </RelativeLayout>
+    </LinearLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/navi_header"
+        app:menu="@menu/navi_menu_week" />
+</androidx.drawerlayout.widget.DrawerLayout>
 
-
-</LinearLayout>

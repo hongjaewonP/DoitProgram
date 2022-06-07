@@ -27,7 +27,7 @@ public class UploadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("UserOne");
+        databaseReference = FirebaseDatabase.getInstance("https://jolp-a5446-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("UserData");
 
     }
 
@@ -47,7 +47,7 @@ public class UploadActivity extends AppCompatActivity {
             if(resultCode == RESULT_OK){
 
                 Uri FileUri = data.getData();
-                StorageReference Folder = FirebaseStorage.getInstance().getReference().child("Files");
+                StorageReference Folder = FirebaseStorage.getInstance("gs://jolp-a5446.appspot.com").getReference().child("Files");
                 final StorageReference file_name = Folder.child("file"+FileUri.getLastPathSegment());
                 file_name.putFile(FileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -73,7 +73,7 @@ public class UploadActivity extends AppCompatActivity {
 }
 
 /*
-upload_activity.xml for this java file
+이전의 upload_activity.xml
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
