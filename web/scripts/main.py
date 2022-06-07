@@ -55,7 +55,7 @@ time.sleep(10)
 # 학기 선택은 상하키로 조종됩니다. 위에서부터 아래에 있는 학기를 선택할수록 반복 횟수를 늘립니다.
 for i in range(1, int(semesterNum)):
     driver.find_element_by_xpath(
-        '//*[@id="mainframe_VFrameSet_WorkFrame_Child__form_div_Work_div_search_cbbYearTermCd_comboedit_input"]'
+        '/html/body/div[1]/div/div/div[2]/div/div/div/div/div[1]/div/div[1]/div[3]/div/div[3]/div[1]/div/div[2]'
         ).send_keys(Keys.ARROW_DOWN)
 
 '''
