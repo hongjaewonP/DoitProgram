@@ -1,0 +1,23 @@
+Collecting mxnet
+  Using cached mxnet-1.7.0.post2-py2.py3-none-win_amd64.whl (33.1 MB)
+Collecting requests<2.19.0,>=2.18.4
+  Using cached requests-2.18.4-py2.py3-none-any.whl (88 kB)
+Collecting numpy<1.17.0,>=1.8.2
+  Using cached numpy-1.16.6.zip (5.1 MB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting graphviz<0.9.0,>=0.8.1
+  Using cached graphviz-0.8.4-py2.py3-none-any.whl (16 kB)
+Collecting idna<2.7,>=2.5
+  Downloading idna-2.6-py2.py3-none-any.whl (56 kB)
+     ---------------------------------------- 56.5/56.5 kB 3.1 MB/s eta 0:00:00
+Collecting urllib3<1.23,>=1.21.1
+  Downloading urllib3-1.22-py2.py3-none-any.whl (132 kB)
+     -------------------------------------- 132.3/132.3 kB 3.9 MB/s eta 0:00:00
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\wonai\anaconda3\lib\site-packages (from requests<2.19.0,>=2.18.4->mxnet) (2021.10.8)
+Collecting chardet<3.1.0,>=3.0.2
+  Downloading chardet-3.0.4-py2.py3-none-any.whl (133 kB)
+     -------------------------------------- 133.4/133.4 kB 4.0 MB/s eta 0:00:00
+Building wheels for collected packages: numpy
+  Building wheel for numpy (setup.py): started
+  Building wheel for numpy (setup.py): still running...
