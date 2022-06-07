@@ -76,15 +76,15 @@ select option(drop down)을 선택할 때 그냥 xpath가 아니라 full xpath�
 for i in range(1, 7):
     # 드롭다운 박스 클릭
     driver.find_element_by_xpath(
-        '//*[@id="mainframe_VFrameSet_WorkFrame_Child__form_div_Work_div_search_cbbViewKindCd_comboedit_input"]'
+        '/html/body/div[1]/div/div/div[2]/div/div/div/div/div[1]/div/div[1]/div[3]/div/div[3]/div[1]/div/div[3]'
     ).click()
     # 아래키 클릭
     driver.find_element_by_xpath(
-        '//*[@id="mainframe_VFrameSet_WorkFrame_Child__form_div_Work_div_search_cbbViewKindCd_comboedit_input"]'
+        '/html/body/div[1]/div/div/div[2]/div/div/div/div/div[1]/div/div[1]/div[3]/div/div[3]/div[1]/div/div[3]'
     ).send_keys(Keys.ARROW_DOWN)
     # 엔터 치기
     driver.find_element_by_xpath(
-        '//*[@id="mainframe_VFrameSet_WorkFrame_Child__form_div_Work_div_search_cbbViewKindCd_comboedit_input"]'
+        '/html/body/div[1]/div/div/div[2]/div/div/div/div/div[1]/div/div[1]/div[3]/div/div[3]/div[1]/div/div[3]'
     ).send_keys(Keys.ENTER)
     # 검색버튼 누르기
     btn = driver.find_element_by_xpath(
