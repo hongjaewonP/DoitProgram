@@ -125,6 +125,6 @@ def extract_txt(file_name):
     return information
 
 
-file_name=r'C:/Users/wonai/mystatus/Doit_program/DoitProgram/NLPprogram/Extract/testpdf/merged.jpg'
-print(extract_txt(file_name))
+#file_name=r'C:/Users/wonai/mystatus/Doit_program/DoitProgram/NLPprogram/Extract/projTEST/merged.jpg'
+#print(extract_txt(file_name))
 

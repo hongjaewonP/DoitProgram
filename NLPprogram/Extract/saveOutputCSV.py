@@ -97,5 +97,5 @@ def makeTotalCSV(filename):
     makeTableCSV(makeEvaluation(filename), 'evaluationInfo.csv')
     makeTableCSV(makeDaylist(filename), 'dateInfo.csv')
 
-filename = 'C:/Users/wonai/mystatus/Doit_program/DoitProgram/NLPprogram/Extract/testpdf/output.csv'
-makeTotalCSV(filename)
+#filename = 'C:/Users/wonai/mystatus/Doit_program/DoitProgram/NLPprogram/Extract/projTEST/output.csv'
+#makeTotalCSV(filename)

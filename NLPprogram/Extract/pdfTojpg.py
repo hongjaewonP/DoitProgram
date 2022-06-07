@@ -2,7 +2,7 @@ import os
 from PIL import Image
 from pdf2jpg import pdf2jpg
 
-file = 'C:/Users/wonai/mystatus/Doit_program/DoitProgram/NLPprogram/testpdf.pdf' ##pdf 파일
+#file = 'C:/Users/wonai/mystatus/Doit_program/DoitProgram/NLPprogram/projTEST.pdf' ##pdf 파일
 
 def pdf_to_jpg(file):
     pyfile = os.path.dirname(os.path.abspath(__file__))
@@ -57,4 +57,4 @@ def img_merge(imgfile):
     return merged_path ##merged 이미지의 절대 경로
 
 
-print(img_merge(pdf_to_jpg(file)))
+#print(img_merge(pdf_to_jpg(file)))
