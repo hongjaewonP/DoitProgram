@@ -164,13 +164,16 @@ for i in range(1, 7):
                 professor = driver.find_element_by_id(
                     'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
                         count) + '_cell_' + str(count) + '_8').text
-                # 강의 별 강의실 변수
-                classroom = driver.find_element_by_id('mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
-                        count) + '_cell_' + str(count) + '_13').text
 
                 # 강의 별 교시 변수
-                period = driver.find_element_by_id('mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
+                period = driver.find_element_by_id(
+                    'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
                         count) + '_cell_' + str(count) + '_12').text
+
+                # 강의 별 강의실 변수
+                classroom = driver.find_element_by_id(
+                    'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
+                        count) + '_cell_' + str(count) + '_13').text
 
                 # 간혹 파일명에 들어가서는 안 되는 값이 있기에, 해당 문자를 다른 문자로 치환해줍니다.
                 # 예외 > \, /, :, *, <, >, |, \n(엔터)
@@ -275,12 +278,13 @@ for i in range(1, 7):
                         fileEx = list_filename[lenmax - 1]  # fileEx가 파일 형식입니다.
 
                         print("after_change"+new_filename + number + "." + fileEx)  # 변경 이후 파일명을 출력해봅니다.
-                       
+                        print(period+" "+classroom)
 
                         # 파일명을 변경합니다.
                         shutil.move(os.path.join(downloadPath, filename),
                                     os.path.join(downloadPath, new_filename + number + "." + fileEx))
                         time.sleep(3)
+
 
                 # 현재 화면에 없는 element과 상호작용할 수 없습니다.
                 # 따라서 전체 화면의 브라우저 스크롤 가장 밑으로 내립니다. *강의계획안 사이트에는 전체 스크롤과 그리드 스크롤이 있습니다.
