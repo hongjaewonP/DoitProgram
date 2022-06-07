@@ -11,8 +11,8 @@ def pdf_extract_info(file):
         os.mkdir(dst)
     else:
         tabula.convert_into(file, dst+"/output.csv", pages='all', output_format="csv", stream=True,lattice=False)
-print(df)
 #df.to_csv('output.csv', encoding='utf-8')
 pdf_extract_info(file_path)
 #특정 디렉토리 안의 pdf들의 표를 추출하는 코드
+#크롤링으로 받은 강의계획서들을 한 디렉토리에 받은 후, 다음 코드를 실행할 예정
 #tabula.convert_into_by_batch("directory_with_pdfs", output_format="csv", pages='all')
