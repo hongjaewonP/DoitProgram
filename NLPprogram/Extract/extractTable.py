@@ -1,7 +1,7 @@
 import os
 import tabula
 
-file = 'C:/Users/wonai/mystatus/Doit_program/DoitProgram/NLPprogram/testpdf.pdf' ##pdf 파일
+file = 'C:/Users/wonai/mystatus/Doit_program/DoitProgram/NLPprogram/test2.pdf' ##pdf 파일
 
 
 def pdf_extract_table_info(file):
