@@ -1,7 +1,7 @@
 import os
 import tabula
 
-file = 'C:/Users/wonai/mystatus/Doit_program/DoitProgram/NLPprogram/testpdf.pdf' ##pdf 파일
+file = 'C:/Users/wonai/mystatus/Doit_program/DoitProgram/NLPprogram/projTEST.pdf' ##pdf 파일
 
 
 def pdf_extract_table_info(file):
@@ -19,7 +19,7 @@ def pdf_extract_table_info(file):
 
     return dst
 
-print(pdf_extract_table_info(file))
+#print(pdf_extract_table_info(file))
 
 #df.to_csv('output.csv', encoding='utf-8')
 #특정 디렉토리 안의 pdf들의 표를 추출하는 코드

@@ -47,7 +47,7 @@ def summarized_kor(spacing_list):
         summarized_word=[]
         if page[0] == 'Description':
             summarized_word.append(page[0])
-            summarized_word.append(summarize(page[1]))
+            summarized_word.append(summarized_word(page[1])) #summarized_page?
         else:
             summarized_word.append(page[0])
             summarized_word.append(page[1])

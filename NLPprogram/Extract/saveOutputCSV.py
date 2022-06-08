@@ -1,8 +1,5 @@
 import csv
 
-#해당 csv 파일에서 추출해서 새 csv 파일에 빈칸없이 때려박기.
-
-
 def makeDaylist(file_name):
     f = open(file_name, 'r', newline='')
     rdr = csv.reader(f)
@@ -30,26 +27,29 @@ def makeDaylist(file_name):
 
     return date_list
 
+
+
 def makeEvaluation(file_name):
     f = open(file_name, 'r', newline='')
     rdr = csv.reader(f)
     info = []
     flag = False
+
     for line in rdr:
         for word in line:
             if word == '강의':
                 flag = True
-                break
+            elif word == '중간고사':
+                return
+            else:
+                continue
 
-        for word in line:
-            if word == '중간고사':
-                flag = False
-                break
         if flag == True:
             info.append(line)
         else:
             continue
     f.close()
+
     evaluation_list = []
     for line in info:
         evaluation_list.append([x for x in line if x])
@@ -60,21 +60,21 @@ def makeLecture(file_name):
     rdr = csv.reader(f)
     info = []
     flag = False
+
     for line in rdr:
         for word in line:
             if word == '중간고사':
                 flag = True
-                break
+            elif word == '주차':
+                return
+            else:
+                continue
 
-        for word in line:
-            if word == '주차':
-                flag = False
-                break
         if flag == True:
             info.append(line)
         else:
             continue
-    f.close()
+
     lecture_list = []
     for line in info:
         lecture_list.append([x for x in line if x])
@@ -84,15 +84,18 @@ def makeLecture(file_name):
 def makeTableCSV(info_list, name):
     #근데 이렇게 하면 다음 내용을 이 csv파일에 추가 못하는데 이거 한 번 방법 알아보기.
     #그... lecture evaluation date 각각 3개 csv 파일 만들어야 함??? 음...
-    f = open(name, 'w', newline='')
-    writer = csv.writer(f)
-    writer.writerows(info_list)
-    f.close
+    if info_list is None:
+        return
+    else:
+        f = open(name, 'w', newline='')
+        writer = csv.writer(f)
+        writer.writerows(info_list)
+        f.close
 
 def makeTotalCSV(filename):
     makeTableCSV(makeLecture(filename), 'lectureInfo.csv')
     makeTableCSV(makeEvaluation(filename), 'evaluationInfo.csv')
     makeTableCSV(makeDaylist(filename), 'dateInfo.csv')
 
-filename = 'C:/Users/wonai/mystatus/Doit_program/DoitProgram/NLPprogram/Extract/testpdf/output.csv'
-makeTotalCSV(filename)
+#filename = 'C:/Users/wonai/mystatus/Doit_program/DoitProgram/NLPprogram/Extract/projTEST/output.csv'
+#makeTotalCSV(filename)
