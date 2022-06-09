@@ -1,4 +1,4 @@
-"""web URL Configuration
+"""webproject URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -30,5 +30,5 @@ urlpatterns = [
     path('', index),
     path('api/',include(router.urls)),
     path('class_info/',class_info),
-    path('class_action/<int:pk>/',class_action)
+    path('class_action/<str:idnums>/',class_action)
 ]
