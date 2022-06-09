@@ -1,5 +1,26 @@
+import json
+
 class returnAnswer:
-    def returnA(i):
+
+    filepath = r"D:\school\team_project\chatBot\chatbotEngine\models\intent\chatbotAnswer.json"   # 답변 json 파일이 저장될 위치
+
+
+
+
+    def strToJSON(i):   #string을 지정 경로에 json 파일로 저장
+        answer = ""
+        answer = str(i)
+        data = {}
+        data['posts'] = []
+        data['posts'].append({
+            "answer" : answer
+        })
+        with open(returnAnswer.filepath, 'w', encoding='utf-8') as outfile:
+            json.dump(data, outfile,ensure_ascii=False)
+        print("json 파일 생성 완료")
+
+
+    def makeA(i):
         answer = ""
         int(i)
         if (i == 0):
@@ -17,4 +38,10 @@ class returnAnswer:
         else :
                 answer = "예기치 못한 오류가 발생했습니다. 다시 시도해주세요."
 
+        return answer
+
+    def returnA(i):
+        answer = ""
+        answer = returnAnswer.makeA(i)
+        returnAnswer.strToJSON(answer)
         return answer
