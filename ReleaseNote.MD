@@ -41,3 +41,21 @@ model_intent_test.py 파일을 실행한다.
 답변을 확인한다.
 
 ![i4](./image/i4.png)
+
+
+
+
+**자연어처리 NLP program 폴더 설명**
+
+내부 extract 파일로 들어가면 강의계획서를 자연어처리를 통해 요약하고 일정을 csv 파일로 추출하는 파이썬 코드가 있습니다.
+
+mvDir.py: 강의계획서를 pdf확장자로 바꾸고 일괄적으로 dir 위치를 옮깁니다.
+pdfTojpg.py: pdf 강의계획서를 jpg 파일로 바꾸어 ocr 이 적용되게 합니다.
+extractTable.py: pdf 강의계획서에서 표 형식의 내용을 추출하여 csv로 만듭니다.
+extractTxt.py: jpg 강의계획서에서 줄글 형식의 내용을 추출하여 text list 를 반환합니다.
+preprocessEng.py: 위에서 반환된 text list를 전처리하고 요약하는 영어 지원 프로그램입니다.
+preprocessKor.py: 위에서 반환된 text list를 전처리하고 요약하는 한글 지원 프로그램입니다.
+saveOutputCSV.py: 추출된 table.csv에서 필요한 정보값을 뽑아내고 일정을 추출합니다.
+saveTxtCSV.py: 요약 처리된 text list 정보들을 csv 파일로 만들어 저장합니다.
+linkToServer.py: 강의계획서의 내용을 담은 csv 파일을 서버에 저장케 하는 파일입니다.
+main.py: 위의 모든 파일을 일괄적으로 실행케 하는 main 파일입니다.
