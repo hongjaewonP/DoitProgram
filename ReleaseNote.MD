@@ -7,4 +7,6 @@
 [app-debug.zip](https://github.com/HellenHong/DoitProgram/files/8875670/app-debug.zip)
 압축 풀면 apk 파일이있습니다. 
 
-![guide](./image/guide.jpg)
+![i1](./image/i1.jpg)
+![i2](./image/i2.jpg)
+![i3](./image/i3.jpg)
