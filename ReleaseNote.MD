@@ -13,3 +13,31 @@
 ![i1](./image/i1.jpg)
 ![i2](./image/i2.jpg)
 ![i3](./image/i3.jpg)
+
+****챗봇 기능이 돌아가지 않을 경우 테스트하는 방법****
+1. DoitProgram(main)에서 ChatBot 폴더를 찾는다.
+2. 다음 파일들을 다운받는다.
+경로도 함께 지정해주어야 한다.
+github에 올려둔 경로 기준
+ChatBot - utils - chatbotPreprocessing.py
+ChatBot - utils - user_dict.csv
+ChatBot - config - GlobalParams.py
+ChatBot - models - intent - intentModel.py
+ChatBot - models - intent - model_intent_test.py
+ChatBot - models - intent - returnAnswer.py
+ChatBot - models - intent - returnQuestion.py
+ChatBot - models - intent -> readme.txt의 다운로드링크에서 intent_model.h5 다운 (intent 폴더에 넣어주면 됩니다)
+ChatBot - train_tools - dict - chatbot_dict.bin
+
+필요한 라이브러리는
+konlpy -> Komoran 이용
+tensorflow -> keras 이용
+json
+
+위 파일들을 저장한 후 pycharm이나 colaboratory에서 실행한다.
+model_intent_test.py 파일을 실행한다.
+
+질문을 입력한다.
+답변을 확인한다.
+
+![i4](./image/i4.png)
